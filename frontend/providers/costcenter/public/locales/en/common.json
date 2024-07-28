@@ -1,0 +1,168 @@
+{
+  "SwitchLanguage": "Switch Language",
+  "Charge": "Recharge",
+  "Balance is insufficient": "Balance is insufficient",
+  "Payment Status": "Payment Status",
+  "Scan with WeChat": "Scan with WeChat",
+  "Balance": "Balance",
+  "SideBar": {
+    "CostOverview": "Cost Overview",
+    "BillingDetails": "Billing Details",
+    "ValuationStandard": "Standard",
+    "CreateInvoice": "Create Invoice"
+  },
+  "Valuation": {
+    "Standard": "Standard",
+    "Name": "Name",
+    "Unit": "Unit",
+    "Price": "Price"
+  },
+  "All Namespace": "All Team ID",
+  "Bonus": "Bonus",
+  "Select Amount": "Select Amount",
+  "Recent Transactions": "Recent Transactions",
+  "Cost Trend": "Cost Trend",
+  "Total Cost": "Total Cost",
+  "Income And Expense": "Income And Expense",
+  "Deduction": "Deduction",
+  "Cost Distribution": "Cost Distribution",
+  "Expenditure": "Expenditure",
+  "Recharge Amount": "Recharge Amount",
+  "Confirm": "Confirm",
+  "Balance Recharge": "Balance Recharge",
+  "Order Number": "Order Number",
+  "Transaction Time": "Transaction Time",
+  "Type": "Type",
+  "CPU": "CPU",
+  "Port": "TCP External Port",
+  "onlyChargedWhenOpenDBPublicAccess": "Only charged when enabling public access to the database",
+  "Memory": "Memory",
+  "Network": "Network",
+  "Storage": "Storage",
+  "cpu": "CPU",
+  "memory": "Memory",
+  "network": "Network",
+  "storage": "Storage",
+  "Total Amount": "Total Amount",
+  "Transfer Amount": "Transfer Amount",
+  "Payment Result": "Payment Result",
+  "Payment Successful": "Payment Successful",
+  "In Payment": "In Payment ...",
+  "Hour": "Hour",
+  "Day": "Day",
+  "Week": "Week",
+  "Month": "Month",
+  "Year": "Year",
+  "Search": "Search",
+  "All": "All",
+  "Total": "Total",
+  "Page": "Page",
+  "View Discount Rules": "View recharge discount rules.",
+  "Cancel": "Cancel",
+  "Not Enough Balance": "Insufficient balance, please recharge immediately.",
+  "Insufficient Balance": "Insufficient balance",
+  "No Data Available": "No Data Available",
+  "Predict Detail": "Next 30 days",
+  "Next month cost estimation": "Prediction",
+  "Recipient ID": "Recipient ID",
+  "Transfer": "Transfer",
+  "Recipient": "Recipient",
+  "Transfer Success": "Transfer Success",
+  "Transfer Amount must be a integer": "Transfer Amount must be a integer",
+  "Recipient ID is invalid": "Recipient ID is invalid",
+  "Transfer Amount must be less than balance": "The balance after the transfer must not be less than 10",
+  "he payee cannot be oneself": "The payee cannot be oneself",
+  "True Amount": "True Amount",
+  "Get Code": "verification",
+  "Stripe Success": "pay with Stripe successfully",
+  "Stripe Cancel": "cancel to pay with Stripe",
+  "GPU Unit": "Card",
+  "Gpu valuation": "GPU Price Table",
+  "common valuation": "Price Table",
+  "Billing Details": "Billing Details",
+  "orders": {
+    "list": "Order List",
+    "invoiceAmount": "Invoice Amount",
+    "invoice": "Generate Invoice",
+    "invoiceOrder": "Invoice Order",
+    "phoneValidation": "Please enter a valid phone number",
+    "taxNumberValidation": "Please enter a valid tax registration number",
+    "bankAccountValidation": "Please enter a valid bank account number",
+    "emailValidation": "Please enter a valid email address",
+    "submit success": "Submit success",
+    "submit fail": "Submit fail",
+    "code success": "Verification code sent successfully",
+    "code error": "Verification code sent failed",
+    "Name": "Name",
+    "Price": "Price",
+    "Unit": "Unit",
+    "details": {
+      "invoiceTitle": {
+        "name": "Invoice Title",
+        "placeholder": "Enter invoice title"
+      },
+      "taxRegistrationNumber": {
+        "name": "Tax Registration",
+        "placeholder": "Enter tax registration number"
+      },
+      "bankName": {
+        "name": "Bank Name",
+        "placeholder": "Enter bank name"
+      },
+      "bankAccount": {
+        "name": "Bank Account",
+        "placeholder": "Enter bank account"
+      },
+      "address": {
+        "name": "Address",
+        "placeholder": "Enter address"
+      },
+      "phone": {
+        "name": "Phone",
+        "placeholder": "Enter phone number"
+      },
+      "fax": {
+        "name": "Fax",
+        "placeholder": "Enter fax number"
+      }
+    },
+    "contract": {
+      "person": {
+        "name": "Contact Person",
+        "placeholder": "Enter contact person"
+      },
+      "email": {
+        "name": "Email",
+        "placeholder": "Enter email address"
+      },
+      "phone": {
+        "name": "Phone",
+        "placeholder": "Enter phone number"
+      },
+      "code": {
+        "name": "Verification Code",
+        "placeholder": "Enter verification code"
+      }
+    },
+    "Invoice Details": "Invoice Details",
+    "Invoice Content": "Invoice Content",
+    "Electronic Computer Service Fee": "Electronic Computer Service Fee",
+    "Contact Information": "Contact Information"
+  },
+  "pay with stripe": "Pay With Stripe",
+  "pay with wechat": "Pay With Wechat",
+  "Pay Minimum Tips": "The amount need to be more than 10 when paying with Stripe",
+  "Source Quota": "Source Quota",
+  "Total Quota": "total",
+  "Used Quota": "used",
+  "Remaining Quota": "remaining",
+  "Receipts And Disbursements": "Receipts And Disbursements",
+  "APP Name": "App name",
+  "APP Type": "App type",
+  "Details": "Details",
+	"Transfer Type":"Transfer Type",
+  "Handle": "Handle",
+  "currencyUnit": "Currency Unit",
+	"Trader ID":"Trader"
+
+}

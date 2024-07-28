@@ -1,0 +1,706 @@
+definitions:
+  common.PropertyQuery:
+    properties:
+      alias:
+        example: gpu-tesla-v100
+        type: string
+      name:
+        example: cpu
+        type: string
+      unit:
+        example: 1m
+        type: string
+      unit_price:
+        example: 10000
+        type: number
+    type: object
+  helper.AppCostsReq:
+    properties:
+      appName:
+        description: |-
+          @Summary App Name
+          @Description App Name
+        example: app
+        type: string
+      appType:
+        description: |-
+          @Summary App type
+          @Description App type
+        example: app
+        type: string
+      endTime:
+        example: "2021-12-01T00:00:00Z"
+        type: string
+      kubeConfig:
+        type: string
+      namespace:
+        description: |-
+          @Summary Namespace
+          @Description Namespace
+        example: ns-admin
+        type: string
+      owner:
+        example: admin
+        type: string
+      page:
+        description: |-
+          @Summary Page
+          @Description Page
+        example: 1
+        type: integer
+      pageSize:
+        description: |-
+          @Summary Page Size
+          @Description Page Size
+        example: 10
+        type: integer
+      startTime:
+        example: "2021-01-01T00:00:00Z"
+        type: string
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    type: object
+  helper.Auth:
+    properties:
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    type: object
+  helper.ErrorMessage:
+    properties:
+      error:
+        example: authentication failure
+        type: string
+    type: object
+  helper.GetPropertiesResp:
+    properties:
+      data:
+        $ref: '#/definitions/helper.GetPropertiesRespData'
+      message:
+        example: successfully retrieved properties
+        type: string
+    type: object
+  helper.GetPropertiesRespData:
+    properties:
+      properties:
+        items:
+          $ref: '#/definitions/common.PropertyQuery'
+        type: array
+    type: object
+  helper.GetTransferRecordReq:
+    properties:
+      endTime:
+        example: "2021-12-01T00:00:00Z"
+        type: string
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      page:
+        description: |-
+          @Summary Page
+          @Description Page
+        example: 1
+        type: integer
+      pageSize:
+        description: |-
+          @Summary Page Size
+          @Description Page Size
+        example: 10
+        type: integer
+      startTime:
+        example: "2021-01-01T00:00:00Z"
+        type: string
+      transferID:
+        description: |-
+          @Summary Transfer ID
+          @Description Transfer ID
+        example: transfer-id-1
+        type: string
+      type:
+        description: |-
+          0: all, 1: in, 2: out
+          @Summary Type of the request
+          @Description Type of the request: 0: all, 1: transfer in, 2: transfer out
+        example: 0
+        type: integer
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    type: object
+  helper.NamespaceBillingHistoryReq:
+    properties:
+      endTime:
+        example: "2021-12-01T00:00:00Z"
+        type: string
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      startTime:
+        example: "2021-01-01T00:00:00Z"
+        type: string
+      type:
+        description: |-
+          @Summary Type of the request (optional)
+          @Description Type of the request (optional)
+          @JSONSchema
+        type: integer
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    type: object
+  helper.NamespaceBillingHistoryRespData:
+    properties:
+      list:
+        example:
+        - '["ns-admin"'
+        - '"ns-test1"]'
+        items:
+          type: string
+        type: array
+    type: object
+  helper.SetPaymentInvoiceReq:
+    properties:
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      paymentIDList:
+        description: |-
+          @Summary Payment ID list
+          @Description Payment ID list
+          @JSONSchema required
+        example:
+        - '["payment-id-1"'
+        - '"payment-id-2"]'
+        items:
+          type: string
+        type: array
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    - paymentIDList
+    type: object
+  helper.TransferAmountReq:
+    properties:
+      amount:
+        description: |-
+          @Summary Transfer amount
+          @Description Transfer amount
+          @JSONSchema required
+        example: 100000000
+        type: integer
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      toUser:
+        description: |-
+          @Summary To user
+          @Description To user
+          @JSONSchema required
+        example: admin
+        type: string
+      transferAll:
+        description: |-
+          @Summary Transfer all
+          @Description Transfer all amount
+        type: boolean
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    - toUser
+    type: object
+  helper.UserBaseReq:
+    properties:
+      endTime:
+        example: "2021-12-01T00:00:00Z"
+        type: string
+      kubeConfig:
+        type: string
+      owner:
+        example: admin
+        type: string
+      startTime:
+        example: "2021-01-01T00:00:00Z"
+        type: string
+      userID:
+        example: admin
+        type: string
+    required:
+    - kubeConfig
+    - owner
+    type: object
+host: localhost:2333
+info:
+  contact:
+    email: bxy4543@gmail.com
+  description: Your API description.
+  termsOfService: https://cloud.sealos.io
+  title: sealos account service
+  version: v1alpha1
+paths:
+  /account/v1alpha1/account:
+    post:
+      consumes:
+      - application/json
+      description: Get user account
+      parameters:
+      - description: auth request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.Auth'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user account
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user account
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user account
+      tags:
+      - Account
+  /account/v1alpha1/costs:
+    post:
+      consumes:
+      - application/json
+      description: Get user costs within a specified time range
+      parameters:
+      - description: User costs amount request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.UserBaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user costs
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse user hour costs amount request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user costs
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user costs
+      tags:
+      - Costs
+  /account/v1alpha1/costs/app:
+    post:
+      consumes:
+      - application/json
+      description: Get app costs within a specified time range
+      parameters:
+      - description: App costs request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.AppCostsReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved app costs
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse get app cost request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get app cost
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get app costs
+      tags:
+      - AppCosts
+  /account/v1alpha1/costs/consumption:
+    post:
+      consumes:
+      - application/json
+      description: Get user consumption amount within a specified time range
+      parameters:
+      - description: User consumption amount request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.UserBaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user consumption amount
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse user consumption amount request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user consumption amount
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user consumption amount
+      tags:
+      - ConsumptionAmount
+  /account/v1alpha1/costs/payment:
+    post:
+      consumes:
+      - application/json
+      description: Get user payment within a specified time range
+      parameters:
+      - description: User payment request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.UserBaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user payment
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse user payment request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user payment
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user payment
+      tags:
+      - Payment
+  /account/v1alpha1/costs/properties:
+    post:
+      consumes:
+      - application/json
+      description: Get user properties used amount within a specified time range
+      parameters:
+      - description: User properties used amount request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.UserBaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user properties used amount
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse user properties used amount request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user properties used amount
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user properties used amount
+      tags:
+      - PropertiesUsedAmount
+  /account/v1alpha1/costs/recharge:
+    post:
+      consumes:
+      - application/json
+      description: Get user recharge amount within a specified time range
+      parameters:
+      - description: User recharge amount request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.UserBaseReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved user recharge amount
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse user recharge amount request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get user recharge amount
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get user recharge amount
+      tags:
+      - RechargeAmount
+  /account/v1alpha1/get-transfer:
+    post:
+      consumes:
+      - application/json
+      description: Get transfer
+      parameters:
+      - description: Get transfer request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.GetTransferRecordReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully get transfer
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to get transfer
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get transfer
+      tags:
+      - Transfer
+  /account/v1alpha1/namespaces:
+    post:
+      consumes:
+      - application/json
+      description: Get the billing history namespace list from the database
+      parameters:
+      - description: Namespace billing history request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.NamespaceBillingHistoryReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved namespace billing history list
+          schema:
+            $ref: '#/definitions/helper.NamespaceBillingHistoryRespData'
+        "400":
+          description: failed to parse namespace billing history request
+          schema:
+            $ref: '#/definitions/helper.ErrorMessage'
+        "401":
+          description: authenticate error
+          schema:
+            $ref: '#/definitions/helper.ErrorMessage'
+        "500":
+          description: failed to get namespace billing history list
+          schema:
+            $ref: '#/definitions/helper.ErrorMessage'
+      summary: Get namespace billing history list
+      tags:
+      - BillingHistory
+  /account/v1alpha1/payment/set-invoice:
+    post:
+      consumes:
+      - application/json
+      description: Set payment invoice
+      parameters:
+      - description: Set payment invoice request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.SetPaymentInvoiceReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully set payment invoice
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse set payment invoice request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to set payment invoice
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Set payment invoice
+      tags:
+      - PaymentInvoice
+  /account/v1alpha1/properties:
+    post:
+      consumes:
+      - application/json
+      description: Get properties from the database
+      parameters:
+      - description: auth request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.Auth'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully retrieved properties
+          schema:
+            $ref: '#/definitions/helper.GetPropertiesResp'
+        "401":
+          description: authenticate error
+          schema:
+            $ref: '#/definitions/helper.ErrorMessage'
+        "500":
+          description: failed to get properties
+          schema:
+            $ref: '#/definitions/helper.ErrorMessage'
+      summary: Get properties
+      tags:
+      - Properties
+  /account/v1alpha1/transfer:
+    post:
+      consumes:
+      - application/json
+      description: Transfer amount
+      parameters:
+      - description: Transfer amount request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/helper.TransferAmountReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: successfully transfer amount
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: failed to parse transfer amount request
+          schema:
+            additionalProperties: true
+            type: object
+        "401":
+          description: authenticate error
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: failed to transfer amount
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Transfer amount
+      tags:
+      - TransferAmount
+swagger: "2.0"

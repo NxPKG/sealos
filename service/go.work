@@ -1,0 +1,15 @@
+go 1.22
+
+use (
+	./database
+	./pay
+	./account
+	./launchpad
+	./exceptionmonitor
+	.
+)
+
+replace (
+	github.com/labring/sealos/controllers/account => ../controllers/account
+	github.com/labring/sealos/controllers/user => ../controllers/user
+)
