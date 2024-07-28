@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "prisma/*": ["prisma/*"]
+    },
+    "types": ["@types/jest"]
+  },
+  "include": [
+    "next-env.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./scripts/**/*.ts",
+    "./prisma/**/*.ts"
+  ],
+  "extends": "../tsconfig.web.json"
+}
